@@ -12,15 +12,38 @@
 </head>
 
 <body>
-    <h1>NavBar</h1>
-    <hr>
+
+    <style>
+        body {
+            /* background-color: #ebeff5; */
+            background-color: #333;
+
+        }
+
+        h5 {
+            color: white;
+        }
+
+        #total-orders {
+            background-color: #4cb4c7;
+        }
+
+        #orders-delivered {
+            background-color: #7abec4;
+        }
+
+        #orders-pending {
+            background-color: #7cd1c0;
+        }
+    </style>
+    {% include 'accounts/navbar.html' %}
+
     {% block content %}
 
 
     {% endblock %}
     <hr>
-    <h1>Footer</h1>
-    <hr>
+    <h5>Footer</h5>
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

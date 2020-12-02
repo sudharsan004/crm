@@ -2,6 +2,59 @@
 
 
 {% block content %}
-<h1>Customers</h1>
+<div class="row container-fluid" style="padding-top: 20px;">
+    <div class="col">
+        <div class="card">
+            <h4 class="card-header"> Customers</h4>
+            <div class="card-body">
+                <button class="btn btn-block btn-outline-primary">Update Customer</button>
+                <button class="btn btn-block btn-outline-danger">Delete Customer</button>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <h4 class="card-header"> Contact Information</h4>
+
+            <div class="card-body">
+                <p>E-mail :</p>
+                <p>Phone :</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <h4 class="card-header">Total Orders</h4>
+            <div class="card-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row container-fluid">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <button class="btn btn-sm btn-primary">Search</button></div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row container-fluid">
+    <div class="col">
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Product</th>
+                    <th>Date Ordered</th>
+                    <th>Status</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

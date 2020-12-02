@@ -2,6 +2,47 @@
 
 
 {% block content %}
-<h1>Dashboard</h1>
+
+
+{% include 'accounts/status.html' %}
+<div class="row container-fluid">
+    <div class="col-md-5">
+        <br>
+        <h5>CUSTOMERS:</h5>
+        <hr>
+        <div class="card card-body">
+            <button class="btn btn-primary btn-block">Create Customers</button>
+            <table class="table table-sm">
+
+                <tr>
+                    <th>Customer</th>
+                    <th>Orders</th>
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+    <div class="col-md-7">
+        <br>
+        <h5>LAST 5 ORDERS</h5>
+        <hr>
+        <div class="card card-body">
+            <button class="btn btn-primary btn-block">Create Products</button>
+            <table class="table table-sm">
+
+                <tr>
+                    <th>Product</th>
+                    <th>Date Ordered</th>
+                    <th>Status</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+</div>
 
 {% endblock %}
