@@ -18,3 +18,8 @@ h5 {
 #orders-pending {
   background-color: #7cd1c0;
 }
+.navbar-brand {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 30px;
+  padding: 0;
+}
