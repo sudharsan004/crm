@@ -11,16 +11,24 @@
         <h5>CUSTOMERS:</h5>
         <hr>
         <div class="card card-body">
-            <button class="btn btn-primary btn-block">Create Customers</button>
+
             <table class="table table-sm">
 
                 <tr>
                     <th>Customer</th>
-                    <th>Orders</th>
+                    <!-- <th>Phone</th> -->
+                    <th>Email</th>
                 </tr>
+                {% for customer in customers %}
+                <tr>
+                    <td>{{ customer.name }}</td>
+                    <!-- <td>{{ customer.phone }}</td> -->
+                    <td>{{ customer.email }}</td>
+                </tr>
+                {% endfor %}
 
             </table>
-
+            <button class="btn btn-primary btn-block">Create Customers</button>
         </div>
     </div>
     <div class="col-md-7">
@@ -28,19 +36,39 @@
         <h5>LAST 5 ORDERS</h5>
         <hr>
         <div class="card card-body">
-            <button class="btn btn-primary btn-block">Create Products</button>
+
             <table class="table table-sm">
 
                 <tr>
-                    <th>Product</th>
+                    <th>Products</th>
+                    <th>Recipient</th>
                     <th>Date Ordered</th>
                     <th>Status</th>
                     <th>Update</th>
                     <th>Delete</th>
                 </tr>
+                {% for order in orders %}
+                <tr>
+                    <td>
+                        {% for product in order.product.all %}
+                        {{product}} ,
+                        {% endfor %}
+                    </td>
+                    <td>{{order.customer}}</td>
+                    <td>{{order.date_created}}</td>
+                    <td>{{order.status}}</td>
+                    <td>
+                        <a class="btn btn-sm btn-outline-warning">update</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-sm btn-outline-danger">delete</a>
+                    </td>
+                </tr>
+
+                {% endfor %}
 
             </table>
-
+            <button class="btn btn-primary btn-block">Create Products</button>
         </div>
     </div>
 </div>

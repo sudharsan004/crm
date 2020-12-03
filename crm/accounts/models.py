@@ -26,6 +26,7 @@ class Customer(models.Model):
     name = models.CharField(max_length=150, null=True)
     email = models.EmailField(null=True)
     phone = PhoneNumberField(null=True)
+    address = models.CharField(null=True, max_length=300)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
