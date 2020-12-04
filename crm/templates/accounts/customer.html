@@ -3,29 +3,70 @@
 
 {% block content %}
 <div class="row container-fluid" style="padding-top: 20px;">
-    <div class="col">
+    <!-- <div class="col">
         <div class="card">
-            <h4 class="card-header"> Customers</h4>
+            <h4 class="card-header"> Customer</h4>
             <div class="card-body">
                 <button class="btn btn-block btn-outline-primary">Update Customer</button>
                 <button class="btn btn-block btn-outline-danger">Delete Customer</button>
             </div>
         </div>
-    </div>
-    <div class="col">
+    </div> -->
+    <div class="col-md-7">
         <div class="card">
-            <h4 class="card-header"> Contact Information</h4>
+            <h4 class="card-header">{{customer.name|title}} - Contact Information</h4>
 
             <div class="card-body">
-                <p>E-mail :</p>
-                <p>Phone :</p>
+                <table class="table table-sm">
+                    <tr>
+                        <th>E-mail</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{customer.email}}
+                        </td>
+                        <td>
+                            {{customer.phone}}
+                        </td>
+                        <td>
+                            {{customer.address}}
+                        </td>
+                    </tr>
+                </table>
+                <button class="btn btn-md btn-outline-primary">Update Customer</button>
+                <button class="btn btn-md btn-outline-danger">Delete Customer</button>
             </div>
         </div>
     </div>
     <div class="col">
-        <div class="card">
-            <h4 class="card-header">Total Orders</h4>
-            <div class="card-body">
+        <div class="card ">
+            <h4 class="card-header">Order Stats</h4>
+            <div class="card-body ">
+                <table class="table table-sm">
+                    <tr>
+                        <th>Total order</th>
+                        <th>Delivered</th>
+                        <th>Pending</th>
+                        <th>Out for delivery</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h6> {{customer.order_set.all.count}}</h5>
+                        </td>
+                        <td>
+                            <h6> {{orders_delivered}}</h5>
+                        </td>
+                        <td>
+                            <h6> {{orders_pending}}</h5>
+                        </td>
+                        <td>
+                            <h6> {{orders_out_for_delivery}}</h5>
+                        </td>
+                    </tr>
+                </table>
+
 
             </div>
         </div>
@@ -52,6 +93,21 @@
                     <th>Update</th>
                     <th>Delete</th>
                 </tr>
+                {% for order in all_orders %}
+                <tr>
+                    <td>{% for i in order.product.all %}
+                        {{i}}
+                        {% endfor %}
+                    </td>
+                    <td>{{order.date_created}}</td>
+                    <td>{{order.status}}</td>
+                    <td><a href="">Update</a></td>
+                    <td><a href="">Remove</a></td>
+
+                </tr>
+
+
+                {% endfor %}
             </table>
         </div>
     </div>

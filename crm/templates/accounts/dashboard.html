@@ -16,14 +16,14 @@
 
                 <tr>
                     <th>Customer</th>
-                    <!-- <th>Phone</th> -->
-                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Details</th>
                 </tr>
                 {% for customer in customers %}
                 <tr>
                     <td>{{ customer.name }}</td>
-                    <!-- <td>{{ customer.phone }}</td> -->
-                    <td>{{ customer.email }}</td>
+                    <td>{{ customer.phone }}</td>
+                    <td><a class="btn btn-info btn-sm" href="{% url 'customer' customer.id %}">View</a></td>
                 </tr>
                 {% endfor %}
 
@@ -51,18 +51,14 @@
                 <tr>
                     <td>
                         {% for product in order.product.all %}
-                        {{product}} ,
+                        {{product}}
                         {% endfor %}
                     </td>
                     <td>{{order.customer}}</td>
                     <td>{{order.date_created}}</td>
                     <td>{{order.status}}</td>
-                    <td>
-                        <a class="btn btn-sm btn-outline-warning">update</a>
-                    </td>
-                    <td>
-                        <a class="btn btn-sm btn-outline-danger">delete</a>
-                    </td>
+                    <td><a class="btn btn-sm btn-info" href="">Update</a></td>
+                    <td><a class="btn btn-sm btn-danger" href="">Remove</a></td>
                 </tr>
 
                 {% endfor %}
