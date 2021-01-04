@@ -53,7 +53,7 @@ def createOrder(request):
             form.save()
             return redirect('home')
     context = {'form': form}
-    return render(request, 'accounts/order_form.html', context)
+    return render(request, 'accounts/update_form.html', context)
 
 
 def updateOrder(request, pk):
@@ -65,7 +65,7 @@ def updateOrder(request, pk):
         if form.is_valid():
             form.save()
             return redirect('home')
-    return render(request, 'accounts/order_form.html', context)
+    return render(request, 'accounts/update_form.html', context)
 
 
 def deleteOrder(request, pk):
@@ -75,3 +75,15 @@ def deleteOrder(request, pk):
         order.delete()
         return redirect('home')
     return render(request, 'accounts/delete.html', context)
+
+
+def updateCustomer(request, pk):
+    customer = Customer.objects.get(id=pk)
+    form = CustomerForm(instance=customer)
+    context = {'form': form}
+    if request.method == 'POST':
+        form = CustomerForm(request.POST, instance=customer)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    return render(request, 'accounts/update_form.html', context)

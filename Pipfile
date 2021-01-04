@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 django-phonenumber-field = {extras = ["phonenumberslite"], version = "*"}
+django-crispy-forms = "*"
 
 [dev-packages]
 autopep8 = "*"
