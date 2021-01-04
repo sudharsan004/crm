@@ -41,3 +41,8 @@ def customer(request, pk):
     context = {'customer': customer, 'all_orders': all_orders,
                'orders_delivered': orders_delivered, 'orders_pending': orders_pending, 'orders_out_for_delivery': orders_out_for_delivery}
     return render(request, 'accounts/customer.html', context=context)
+
+
+def order_view(request):
+    
+    return render(request,'accounts/order_form.html')
