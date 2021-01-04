@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 # Create your views here.
+from .forms import OrderForm
 
 
 def home(request):
@@ -43,6 +44,25 @@ def customer(request, pk):
     return render(request, 'accounts/customer.html', context=context)
 
 
-def order_view(request):
-    
-    return render(request,'accounts/order_form.html')
+def createOrder(request):
+    form = OrderForm()
+    if request.method == 'POST':
+        print(request.POST)
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    context = {'form': form}
+    return render(request, 'accounts/order_form.html', context)
+
+
+def updateOrder(request, pk):
+    order = Order.objects.get(id=pk)
+    form = OrderForm(instance=order)
+    context = {'form': form}
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    return render(request, 'accounts/order_form.html', context)
