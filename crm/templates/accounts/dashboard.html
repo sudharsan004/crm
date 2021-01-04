@@ -51,7 +51,7 @@
                 <tr>
                     <td>
                         {% for product in order.product.all %}
-                        {{product}}
+                        {{product}}{% if not forloop.last %}, {% endif %}
                         {% endfor %}
                     </td>
                     <td>{{order.customer}}</td>
