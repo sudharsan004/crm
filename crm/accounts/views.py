@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import *
 # Create your views here.
-from .forms import OrderForm
+from .forms import *
+from django.forms import formset_factory
 
 
 def home(request):
@@ -87,13 +88,23 @@ def createCustomer(request):
             return redirect('home')
     return render(request, 'accounts/display_form.html', context)
 
+
 def updateCustomer(request, pk):
     customer = Customer.objects.get(id=pk)
     form = CustomerForm(instance=customer)
-    context = {'form': form}
+    context = {'form': form, 'title': 'Update Customer'}
     if request.method == 'POST':
         form = CustomerForm(request.POST, instance=customer)
         if form.is_valid():
             form.save()
             return redirect('home')
+    return render(request, 'accounts/display_form.html', context)
+
+
+def createCustomerOrders(request, customer_id):
+    customer = Customer.objects.get(id=customer_id)
+    form = OrderForm(initial={'customer': customer})
+    # form_set = formset_factory(OrderForm, extra=4)
+    # context = {'form_set': form_set}
+    context = {'form': form, 'title': 'Create Customer Order'}
     return render(request, 'accounts/display_form.html', context)

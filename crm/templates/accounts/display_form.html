@@ -10,6 +10,12 @@
                 <form class="" action="" method="post">
                     {% csrf_token %}
                     {{form|crispy}}
+                    {% if form_set  %}
+                    {% for form in form_set %}
+                    {{form|crispy}}
+                    {% endfor %}
+                    {% endif %}
+
                     <br><br>
                     <input type="submit" value="Submit">
                 </form>

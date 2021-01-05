@@ -35,8 +35,10 @@
                         </td>
                     </tr>
                 </table>
-                <button class="btn btn-md btn-outline-primary">Update Customer</button>
-                <button class="btn btn-md btn-outline-danger">Delete Customer</button>
+                <a href="{% url 'update_customer' customer.id %}" class="btn btn-md btn-outline-primary">Update
+                    Details</a>
+                <a href="{% url 'create_customer_orders' customer.id %}" class="btn btn-md btn-outline-info">Create
+                    Order</a>
             </div>
         </div>
     </div>
