@@ -1,6 +1,6 @@
 {% extends 'accounts/base.html' %}
 
-
+{% load crispy_forms_tags %}
 {% block content %}
 <div class="row container-fluid" style="padding-top: 20px;">
     <!-- <div class="col">
@@ -79,7 +79,11 @@
     <div class="col">
         <div class="card">
             <div class="card-body">
-                <button class="btn btn-sm btn-primary">Search</button></div>
+                <form action="" method="post">
+                    {{orderfilter.form}}
+                </form>
+                <button class="btn btn-sm btn-primary">Search</button>
+            </div>
         </div>
     </div>
 </div>

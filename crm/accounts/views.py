@@ -3,6 +3,7 @@ from .models import *
 # Create your views here.
 from .forms import *
 from django.forms import formset_factory
+from .filter import OrderFilter
 
 
 def home(request):
@@ -29,6 +30,7 @@ def product(request):
 def customer(request, pk):
     customer = Customer.objects.get(id=pk)
     all_orders = customer.order_set.all()
+    orderfilter = OrderFilter()
     try:
         orders_delivered = customer.order_set.filter(
             status="Delivered").count()
@@ -41,7 +43,8 @@ def customer(request, pk):
     orders_out_for_delivery = all_orders.count()-(orders_delivered+orders_pending)
 
     context = {'customer': customer, 'all_orders': all_orders,
-               'orders_delivered': orders_delivered, 'orders_pending': orders_pending, 'orders_out_for_delivery': orders_out_for_delivery}
+               'orders_delivered': orders_delivered, 'orders_pending': orders_pending, 'orders_out_for_delivery': orders_out_for_delivery,
+               'orderfilter': orderfilter}
     return render(request, 'accounts/customer.html', context=context)
 
 
